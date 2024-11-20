@@ -1,9 +1,10 @@
-from flask import Flask
+from flask import Flask, render_template
 import os
 import mainfunctions
 import requests
 
-url = "D"
+app = Flask(__name__)
+app.config['SECRET_KEY'] = 'secret123'  # Replace with a secure key
 
 
 def get_api_key(filename):
@@ -11,7 +12,7 @@ def get_api_key(filename):
     return all_keys["aqi_api_key"]
 app = Flask(__name__)
 
-@app.route('/')
+@app.route('/', methods=['GET', 'POST'])
 def index():
     return "Hello, World!"
 
