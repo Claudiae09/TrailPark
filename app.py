@@ -2,6 +2,8 @@ from flask import Flask, render_template
 import os
 import mainfunctions
 import requests
+from flask_wtf import FlaskForm
+from wtforms import StringField, EmailField, IntegerField, RadioField, SubmitField
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'secret123'  # Replace with a secure key
