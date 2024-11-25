@@ -6,23 +6,38 @@
     <title>Find National Parks</title>
 </head>
 <body>
-    <h1>Find National Parks</h1>
-    <form method="POST">
-        {{ form.hidden_tag() }}
-        <label for="state">Select a State:</label>
-        {{ form.state }}
-        {{ form.submit }}
-    </form>
+  <h1>Find National Parks</h1>
+<form method="POST">
+    {{ form.hidden_tag() }}
 
-    {% if parks %}
-        <h2>Parks in Selected State:</h2>
+    <!-- Label and Select Field for State -->
+    <label for="{{ form.state.id }}">{{ form.state.label.text }}</label>
+    {{ form.state }}  <!-- This renders the dropdown for selecting a state -->
+
+    {{ form.submit }}  <!-- Submit button for state selection -->
+</form>
+
+{% if parks %}
+    <h2>Select a Park:</h2>
+    <form method="POST">
+        {{ form.hidden_tag() }}  <!-- Prevent CSRF errors by including the hidden tag -->
+
         <ul>
             {% for park in parks %}
-                <li><strong>{{ park['fullName'] }}</strong>: {{ park.get('description', 'No description available') }}</li>
+                <li>
+                    <input type="radio" name="selected_park" value="{{ park['parkCode'] }}" id="{{ park['parkCode'] }}">
+                    <label for="{{ park['parkCode'] }}">{{ park['fullName'] }}</label>
+                </li>
             {% endfor %}
         </ul>
-    {% elif parks is not none %}
-        <p>No parks found for the selected state.</p>
-    {% endif %}
+
+        <!-- Submit button for selecting a park -->
+        <button type="submit">Submit</button>
+    </form>
+{% else %}
+    <p>No parks found for the selected state.</p>
+{% endif %}
+
+
 </body>
 </html>
