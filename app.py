@@ -7,6 +7,7 @@ from flask_wtf import FlaskForm
 from wtforms import SelectField, SubmitField
 import tkinter as tk
 from tkinter import ttk
+from tkcalendar import Calendar
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'secret123'  # Replace with a secure key
@@ -36,6 +37,7 @@ def index():
     form = StateForm()
     parks = None
     parks_details = None
+    visit_date = None
 
     # Process the state selection form
     if form.validate_on_submit():
@@ -47,8 +49,17 @@ def index():
         selected_park_code = request.form['selected_park']
         parks_details = get_park_details(selected_park_code)
 
+     # If a date is selected
+    if "visit_date" in request.form:
+        visit_date = request.form['visit_date']
+        print(f"Selected visit date: {visit_date}")  # Debug or process as needed
+    else:
+        if "visit_date" not in request.form:
+            flash("Please select a valid date.", "error")
+
     # Render the template
-    return render_template('index.html', form=form, parks=parks, parks_details=parks_details)
+    return render_template('index.html', form=form, parks=parks, parks_details=parks_details, visit_date=visit_date)
 
 if __name__ == '__main__':
     app.run(debug=True, port=7070)
+
