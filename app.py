@@ -1,5 +1,5 @@
 from flask import Flask, render_template,request
-from NPS_Api import get_parks_by_state
+from NPS_Api import get_parks_by_state,get_park_details
 import os
 import mainfunctions
 import requests
