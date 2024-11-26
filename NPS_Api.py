@@ -67,6 +67,3 @@ label.pack(pady=10)
 # Run the application
 root.mainloop()
 
-def get_park_activities(activities_code):
-    url = f"{BASE_URL}/parks?stateCode={activities_code}&api_key={API_KEY}"
-    try:

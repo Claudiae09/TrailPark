@@ -6,51 +6,62 @@
     <title>Find National Parks</title>
 </head>
 <body>
-  <h1>Find National Parks</h1>
-<form method="POST">
-    {{ form.hidden_tag() }}
+    <h1>Find National Parks</h1>
 
-    <!-- Label and Select Field for State -->
-    <label for="{{ form.state.id }}">{{ form.state.label.text }}</label>
-    {{ form.state }}  <!-- This renders the dropdown for selecting a state -->
-
-    {{ form.submit }}  <!-- Submit button for state selection -->
-</form>
-
-{% if parks %}
-    <h2>Select a Park:</h2>
+    <!-- State Selection Form -->
     <form method="POST">
-        {{ form.hidden_tag() }}  <!-- Prevent CSRF errors by including the hidden tag -->
+        {{ form.hidden_tag() }}
 
+        <!-- Label and Select Field for State -->
+        <label for="{{ form.state.id }}">{{ form.state.label.text }}</label>
+        {{ form.state }}
+
+        <!-- Submit Button for State Selection -->
+        {{ form.submit }}
+    </form>
+
+    <!-- Park Selection -->
+    {% if parks %}
+        <h2>Select a Park:</h2>
+        <form method="POST">
+            {{ form.hidden_tag() }}
+
+            <ul>
+                {% for park in parks %}
+                    <li>
+                        <input type="radio" name="selected_park" value="{{ park['parkCode'] }}" id="{{ park['parkCode'] }}">
+                        <label for="{{ park['parkCode'] }}">{{ park['fullName'] }}</label>
+                    </li>
+                {% endfor %}
+            </ul>
+
+            <!-- Add a Date Picker -->
+            <label for="visit-date">Select a Date:</label>
+            <input type="date" id="visit-date" name="visit_date" required>
+
+            <!-- Submit Button for Park Selection -->
+            <button type="submit">Submit</button>
+        </form>
+    {% else %}
+        <p>No parks found for the selected state.</p>
+    {% endif %}
+
+    <!-- Park Details and Activities -->
+    {% if parks_details %}
+        <h2>{{ parks_details.name }}</h2>
+        <p>{{ parks_details.description }}</p>
+
+        <h3>Activities:</h3>
         <ul>
-            {% for park in parks %}
-                <li>
-                    <input type="radio" name="selected_park" value="{{ park['parkCode'] }}" id="{{ park['parkCode'] }}">
-                    <label for="{{ park['parkCode'] }}">{{ park['fullName'] }}</label>
-                </li>
+            {% for activity in parks_details.activities %}
+                <li>{{ activity }}</li>
             {% endfor %}
         </ul>
 
-        <!-- Add a Date Picker -->
-         <label for="visit-date">Select a Date:</label>
-         <input type="date" id="visit-date" name="visit_date" required>
-
-        <script>
-    document.addEventListener("DOMContentLoaded", function() {
-        flatpickr("#visit-date", {
-            dateFormat: "Y-m-d", // Format the date as YYYY-MM-DD
-        });
-    });
-</script>
-
-
-        <!-- Submit button for selecting a park -->
-        <button type="submit">Submit</button>
-    </form>
-{% else %}
-    <p>No parks found for the selected state.</p>
-{% endif %}
-
-
+        <p>Location: {{ parks_details.location }}</p>
+        {% if parks_details.image_url %}
+            <img src="{{ parks_details.image_url }}" alt="Park Image" style="max-width: 300px;">
+        {% endif %}
+    {% endif %}
 </body>
 </html>
