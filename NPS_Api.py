@@ -44,26 +44,29 @@ def get_park_details(park_code):
         print(f"Error fetching park details: {e}")
     return None
 
-def show_selected_date():
-    selected_date = calendar.get_date()
-    label.config(text=f"You selected: {selected_date}")
+def run_calendar_app():
+    def show_selected_date():
+        selected_date = calendar.get_date()
+        label.config(text=f"You selected: {selected_date}")
 
 # Create the main application window
-root = tk.Tk()
-root.title("Date Picker")
+    root = tk.Tk()
+    root.title("Date Picker")
 
 # Create and place the Calendar widget
-calendar = Calendar(root, selectmode='day', year=2024, month=12, day=1)
-calendar.pack(pady=20)
+    calendar = Calendar(root, selectmode='day', year=2024, month=12, day=1)
+    calendar.pack(pady=20)
 
 # Button to confirm the selection
-select_button = tk.Button(root, text="Select Date", command=show_selected_date)
-select_button.pack(pady=10)
+    select_button = tk.Button(root, text="Select Date", command=show_selected_date)
+    select_button.pack(pady=10)
 
 # Label to display the selected date
-label = tk.Label(root, text="")
-label.pack(pady=10)
+    label = tk.Label(root, text="")
+    label.pack(pady=10)
 
 # Run the application
-root.mainloop()
+    root.mainloop()
 
+if __name__ == '__main__':
+    run_calendar_app()

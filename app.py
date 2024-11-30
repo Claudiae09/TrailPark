@@ -1,7 +1,6 @@
 from flask import Flask, render_template,request
 from NPS_Api import get_parks_by_state,get_park_details
 import os
-import mainfunctions
 import requests
 from flask_wtf import FlaskForm
 from wtforms import SelectField, SubmitField
@@ -62,5 +61,5 @@ def index():
     return render_template('index.html', form=form, parks=parks, parks_details=parks_details, visit_date=visit_date)
 
 if __name__ == '__main__':
-    app.run(debug=True, port=7070)
+    app.run(debug=True, port=7050)
 

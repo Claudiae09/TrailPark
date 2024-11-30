@@ -1,0 +1,101 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap'); /* General reset for margins and paddings */
+/* General reset for margins and paddings */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Body styling */
+body {
+    font-family: 'Bebas Neue', sans-serif;
+    margin: 0;
+    padding: 0;
+    color: #fff;
+    background-color: #333;
+}
+
+/* Header styling */
+header {
+    text-align: center;
+    padding: 20px 0;
+    background-color: #ffffff;
+}
+
+header img {
+    max-width: 200px;
+}
+
+/* Landing section styling */
+.landing-section {
+    position: relative;
+    height: 70vh; /* Landing section height */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+/* Green overlay for landing section */
+.landing-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #546F6C; /* Semi-transparent green overlay */
+    opacity: 0.6;
+    z-index: 1;
+}
+
+/* Landing section content styling */
+.landing-section h1 {
+    position: relative;
+    z-index: 2; /* Ensures text appears above overlay */
+    font-size: 64px;
+    font-weight: bold;
+    margin-bottom: 10px;
+    color: white;
+    text-transform: uppercase;
+}
+
+.landing-section p {
+    position: relative;
+    z-index: 2; /* Ensures text appears above overlay */
+    font-size: 24px;
+    margin-bottom: 20px;
+    color: white;
+}
+
+/* Form styling for the dropdown */
+.landing-section form {
+    position: relative;
+    z-index: 2;
+    margin: 0 auto;
+}
+
+/* Align label with dropdown and style */
+.state-label {
+    display: inline-block;
+    font-size: 18px;
+    color: #ffffff !important; /* Force the label to be white */
+    margin-right: 10px; /* Add spacing between label and dropdown */
+    vertical-align: middle; /* Align the label with the dropdown */
+    z-index: 3; /* Ensure it appears above any overlay */
+}
+
+/* Dropdown styling */
+.landing-section form select {
+    width: 250px; /* Adjust width */
+    padding: 10px;
+    font-size: 16px;
+    border: none; /* Remove border */
+    border-radius: 5px; /* Optional rounded corners */
+    background-color: rgba(255, 255, 255, 0.9); /* Subtle transparent background */
+    color: #333;
+    cursor: pointer;
+    text-align: center;
+    box-shadow: none; /* Remove any shadow */
+}

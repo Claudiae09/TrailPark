@@ -4,21 +4,32 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Find National Parks</title>
+
+    <link rel="stylesheet" href="/static/styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
 </head>
 <body>
-    <h1>Find National Parks</h1>
+    <header>
+        <img src="/static/Logo.png" alt="Logo">
+    </header>
 
-    <!-- State Selection Form -->
-    <form method="POST">
-        {{ form.hidden_tag() }}
+        <section class="landing-section" style="background: url('/static/Main-Pic.jpeg') no-repeat center center/cover; background-size: cover;">
+        <h1>Find Your Park</h1>
+        <p>Plan your trip. Pick the state. Pick the park. Pick the date.</p>
 
-        <!-- Label and Select Field for State -->
-        <label for="{{ form.state.id }}">{{ form.state.label.text }}</label>
-        {{ form.state }}
+    <label for="state-select" class="state-label">Select a State</label>
+            <form method="POST" id="state-form">
+            {{ form.hidden_tag() }}
+            {{ form.state }}
+        </form>
+    </section>
 
-        <!-- Submit Button for State Selection -->
-        {{ form.submit }}
-    </form>
+        <script>
+        // Automatically submit the form when a state is selected
+        document.getElementById('state-form').addEventListener('change', function () {
+            this.submit();
+        });
+    </script>
 
     <!-- Park Selection -->
     {% if parks %}
