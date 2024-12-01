@@ -3,7 +3,7 @@ from NPS_Api import get_parks_by_state, get_park_details
 import os
 import requests
 from flask_wtf import FlaskForm
-from wtforms import SelectField, SubmitField
+from wtforms import SelectField, SubmitField, RadioField, DateField
 import tkinter as tk
 from tkinter import ttk
 from tkcalendar import Calendar
@@ -11,6 +11,7 @@ from tkcalendar import Calendar
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'secret123'  # Replace with a secure key
 
+# Form to select state and submit
 class StateForm(FlaskForm):
     state = SelectField("Select a State", choices=[
         ('AL', 'Alabama'), ('AK', 'Alaska'), ('AZ', 'Arizona'), ('AR', 'Arkansas'),
@@ -27,9 +28,10 @@ class StateForm(FlaskForm):
         ('VT', 'Vermont'), ('VA', 'Virginia'), ('WA', 'Washington'), ('WV', 'West Virginia'),
         ('WI', 'Wisconsin'), ('WY', 'Wyoming')
     ],
-        render_kw={"id": "state"}
-    )
+                        render_kw={"id": "state"}
+                        )
     submit = SubmitField("Find Parks")
+
 
 @app.route('/', methods=['GET', 'POST'])
 def index():
@@ -69,6 +71,5 @@ def index():
         message=message
     )
 
-# Move the following block outside of the index() function
 if __name__ == '__main__':
     app.run(debug=True, port=7070)

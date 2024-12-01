@@ -21,7 +21,7 @@
     <h1>Find Your Park</h1>
     <p>Plan your trip. Pick the state. Pick the park. Pick the date.</p>
 
-    <!-- State Selection -->
+    <!-- State Selection Form -->
     <label for="state-select" class="state-label">Select a State</label>
     <form method="POST" id="state-form">
         {{ form.hidden_tag() }}
@@ -35,19 +35,21 @@
         this.submit();
     });
 </script>
+
 <!-- Park Selection Section -->
 {% if parks is not none %}
 <section class="parks-section">
     {% if parks %}
+    <!-- Display the list of parks -->
     <h2 class="section-title">Pick the Park:</h2>
     <form method="POST">
         {{ form.hidden_tag() }}
         <ul class="park-list">
             {% for park in parks %}
             <li class="park-item">
-                <!-- Radio Button -->
+                <!-- Radio Button for park selection -->
                 <input type="radio" name="selected_park" value="{{ park['parkCode'] }}" id="{{ park['parkCode'] }}">
-                <!-- Label for the Card -->
+                <!-- Park details as a label -->
                 <label for="{{ park['parkCode'] }}">
                     <h3>{{ park['fullName'] }}</h3>
                     <p>{{ park['description'] }}</p>
@@ -69,24 +71,29 @@
         </div>
     </form>
     {% else %}
+    <!-- Message when no parks are found -->
     <p class="no-parks-message">{{ message }}</p>
     {% endif %}
 </section>
 {% endif %}
-
 
 <!-- Park Details Section -->
 {% if parks_details %}
 <section class="park-details-section">
     <div class="park-image-container">
         {% if parks_details.image_url %}
+        <!-- Display park image -->
         <img src="{{ parks_details.image_url }}" alt="Park Image" class="park-image">
         {% endif %}
     </div>
 
+    <!-- Park name -->
     <h2 class="park-title">{{ parks_details.name }}</h2>
+
+    <!-- Park description -->
     <p class="park-description">{{ parks_details.description }}</p>
 
+    <!-- Activities Section -->
     <h3 class="activities-title">Activities:</h3>
     <ul class="activities-list">
         {% for activity in parks_details.activities %}
@@ -94,6 +101,7 @@
         {% endfor %}
     </ul>
 
+    <!-- Park location -->
     <p class="park-location">Location: {{ parks_details.location }}</p>
 </section>
 {% endif %}

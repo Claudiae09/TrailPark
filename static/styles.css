@@ -7,7 +7,7 @@
     box-sizing: border-box;
 }
 
-/* Body styling */
+/* Body styling - Sets the font, background, and text color for the entire page */
 body {
     font-family: 'Bebas Neue', sans-serif;
     margin: 0;
@@ -16,30 +16,31 @@ body {
     background-color: #333;
 }
 
-/* Header styling */
+/* Header styling - Aligns and styles the header section */
 header {
     text-align: center;
     padding: 20px 0;
     background-color: #ffffff;
 }
 
+/* Header image - Ensures the logo is responsive */
 header img {
     max-width: 200px;
 }
 
-/* Landing section styling */
+/* Landing section - Defines the main section with the background image */
 .landing-section {
     position: relative;
-    height: 70vh; /* Landing section height */
+    height: 70vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     text-align: center;
-    background: url('/static/Main-Pic.jpeg') no-repeat center center/cover; /* Background image */
+    background: url('/static/Main-Pic.jpeg') no-repeat center center/cover;
 }
 
-/* Green overlay for landing section */
+/* Green overlay for the landing section - Adds a transparent green layer over the background */
 .landing-section::before {
     content: '';
     position: absolute;
@@ -47,14 +48,14 @@ header img {
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(84, 111, 108, 0.6); /* Semi-transparent green overlay */
+    background-color: rgba(84, 111, 108, 0.6);
     z-index: 1;
 }
 
-/* Landing section content styling */
+/* Landing section title - Styles the heading in the landing section */
 .landing-section h1 {
     position: relative;
-    z-index: 2; /* Ensures text appears above overlay */
+    z-index: 2;
     font-size: 64px;
     font-weight: bold;
     margin-bottom: 10px;
@@ -62,45 +63,49 @@ header img {
     text-transform: uppercase;
 }
 
+/* Landing section paragraph - Styles the subtitle in the landing section */
 .landing-section p {
     position: relative;
-    z-index: 2; /* Ensures text appears above overlay */
+    z-index: 2;
     font-size: 24px;
     margin-bottom: 20px;
     color: white;
 }
 
-/* Dropdown styling */
+/* Dropdown form container - Positions and centers the dropdown */
 .landing-section form {
     position: relative;
     z-index: 2;
     margin: 0 auto;
 }
 
+/* Dropdown label - Styles the label next to the dropdown menu */
 .state-label {
     font-size: 18px;
-    color: #ffffff !important; /* Force the label to be white */
+    color: #ffffff !important;
     margin-right: 10px;
     z-index: 3;
 }
 
+/* Dropdown select menu - Styles the dropdown for state selection */
 .landing-section form select {
     width: 250px;
     padding: 10px;
     font-size: 16px;
-    border: none; /* Remove border */
-    border-radius: 5px; /* Optional rounded corners */
-    background-color: rgba(255, 255, 255, 0.9); /* Subtle transparent background */
+    border: none;
+    border-radius: 5px;
+    background-color: rgba(255, 255, 255, 0.9);
     color: #333;
     cursor: pointer;
 }
 
-/* Parks Section */
+/* Parks section - Styles the container for the list of parks */
 .parks-section {
     background-color: white;
     padding: 50px 20px;
 }
 
+/* Section title - Styles the heading for the parks section */
 .section-title {
     color: #546F6C;
     font-size: 24px;
@@ -108,77 +113,70 @@ header img {
     margin-bottom: 20px;
 }
 
+/* Park list - Removes default list styles for park items */
 .park-list {
     list-style: none;
     padding: 0;
     margin: 0;
 }
 
-/* General Park Item Styling */
+/* Individual park item - Styles each park card */
 .park-item {
     display: flex;
     align-items: center;
     margin-bottom: 20px;
-    padding: 15px 15px 15px 70px; /* Space for radio button */
-    border: 2px solid #ccc; /* Default border */
-    border-radius: 15px; /* Rounded corners */
+    padding: 15px 15px 15px 70px;
+    border: 2px solid #ccc;
+    border-radius: 15px;
     background-color: white;
     position: relative;
-    cursor: pointer; /* Make the entire card clickable */
+    cursor: pointer;
     transition: border-color 0.3s ease, background-color 0.3s ease;
 }
 
-/* Remove Default Radio Button */
+/* Radio button for park selection - Hides the default radio button */
 .park-item input[type="radio"] {
     position: absolute;
-    opacity: 0; /* Completely hide the native radio button */
-    pointer-events: none; /* Disable interaction with the native input */
+    opacity: 0;
+    pointer-events: none;
 }
 
-/* Custom Radio Button Styling */
+/* Custom radio button - Styles the circular radio button */
 .park-item label::before {
     content: '';
     display: inline-block;
     width: 20px;
     height: 20px;
-    border: 2px solid #ccc; /* Default gray border */
-    border-radius: 50%; /* Circular shape */
-    background-color: white; /* Default white background */
+    border: 2px solid #ccc;
+    border-radius: 50%;
+    background-color: white;
     position: absolute;
-    left: -30px; /* Adjust this value to move the radio button further left */
+    left: -30px;
     top: 50%;
     transform: translateY(-50%);
     transition: border-color 0.3s ease, background-color 0.3s ease;
 }
 
-
-/* Selected State for Radio Button */
+/* Selected radio button - Changes the appearance when selected */
 .park-item input[type="radio"]:checked + label::before {
-    border-color: #546F6C; /* Green border */
-    background-color: #546F6C; /* Green fill */
-    box-shadow: 0px 0px 5px rgba(84, 111, 108, 0.8); /* Optional glow effect */
+    border-color: #546F6C;
+    background-color: #546F6C;
+    box-shadow: 0px 0px 5px rgba(84, 111, 108, 0.8);
 }
 
-/* Remove Hover Effect */
-.park-item:hover {
-    border-color: #ccc; /* Keep default gray border */
-    background-color: white; /* Keep white background */
-    box-shadow: none; /* Remove shadow effect */
-}
-
-/* Park Item Label Styling */
+/* Park label - Styles the text inside the park card */
 .park-item label {
     display: flex;
     flex-direction: column;
     cursor: pointer;
     width: 100%;
-    padding-left: 40px; /* Space for radio button */
-    border-radius: 15px; /* Match card’s rounded corners */
-    position: relative; /* Position for pseudo-elements */
+    padding-left: 40px;
+    border-radius: 15px;
+    position: relative;
     transition: background-color 0.3s ease, border-color 0.3s ease;
 }
 
-/* Title and Description */
+/* Park title - Styles the name of the park */
 .park-item h3 {
     margin: 0;
     font-size: 18px;
@@ -186,41 +184,33 @@ header img {
     color: black;
 }
 
+/* Park description - Styles the description text */
 .park-item p {
     margin: 5px 0 0;
     font-size: 14px;
     color: #666;
 }
 
-/* Remove Additional Focus/Outline on Label */
-.park-item input[type="radio"]:focus-visible + label {
-    outline: none; /* Completely remove the focus outline */
-}
-/* Calendar Section Styling */
+/* Calendar section - Styles the container for the date picker */
 .calendar-section {
     margin-top: 20px;
     text-align: left;
-    background-color: #f9f9f9; /* Subtle light background */
+    background-color: #f9f9f9;
     padding: 15px 20px;
-    border-radius: 10px; /* Rounded corners */
-    border: 2px solid #ccc; /* Subtle border */
-    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    border-radius: 10px;
+    border: 2px solid #ccc;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
 }
 
+/* Calendar title - Styles the heading for the calendar section */
 .calendar-title {
     font-size: 20px;
     font-weight: bold;
-    color: #546F6C; /* Match your green aesthetic */
+    color: #546F6C;
     margin-bottom: 10px;
 }
 
-.calendar-label {
-    font-size: 16px;
-    color: #333;
-    display: block;
-    margin-bottom: 8px;
-}
-
+/* Calendar input - Styles the date picker field */
 .calendar-input {
     width: 100%;
     padding: 10px;
@@ -233,49 +223,31 @@ header img {
     transition: border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
-/* Hover and Focus States for Calendar Input */
-.calendar-input:hover,
-.calendar-input:focus {
-    border-color: #546F6C; /* Green border on hover/focus */
-    box-shadow: 0px 0px 6px rgba(84, 111, 108, 0.5); /* Subtle glow */
-    outline: none;
-}
-
-/* Submit Section Styling */
-.submit-section {
-    margin-top: 20px;
-    text-align: center;
-}
-
+/* Submit button - Styles the button for form submission */
 .submit-button {
     padding: 10px 20px;
     font-size: 18px;
     font-weight: bold;
     color: white;
-    background-color: #546F6C; /* Match your green aesthetic */
+    background-color: #546F6C;
     border: none;
     border-radius: 5px;
     cursor: pointer;
     transition: background-color 0.3s ease, box-shadow 0.3s ease;
-    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
 }
 
-/* Hover and Focus States for Submit Button */
-.submit-button:hover,
-.submit-button:focus {
-    background-color: #455b58; /* Darker green on hover */
-    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2); /* Enhance shadow */
-    outline: none;
-}
-/* Park Details Section Styling */
+/* Park details section - Styles the container for displaying park details */
 .park-details-section {
     margin-top: 30px;
     padding: 20px;
-    background-color: #f9f9f9; /* Subtle light background */
+    background-color: #f9f9f9;
     border: 2px solid #ccc;
     border-radius: 10px;
     box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    text-align: center;
 }
+
 
 /* Header with Title and Image */
 .park-details-header {
@@ -285,22 +257,22 @@ header img {
     margin-bottom: 20px;
 }
 
-/* Park Title */
+/* Park Title - Styles the park name */
 .park-title {
     font-size: 28px;
     font-weight: bold;
-    color: #546F6C; /* Green aesthetic */
+    color: #546F6C;
 }
 
-/* Park Image */
+/* Park Image - Styles the park image with a shadow and border */
 .park-image {
     max-width: 150px;
-    border-radius: 10px; /* Rounded corners */
-    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow */
-    border: 2px solid #ccc; /* Optional border */
+    border-radius: 10px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    border: 2px solid #ccc;
 }
 
-/* Park Description */
+/* Park Description - Styles the descriptive text of the park */
 .park-description {
     font-size: 16px;
     color: #333;
@@ -308,151 +280,140 @@ header img {
     margin-bottom: 20px;
 }
 
-/* Activities Section */
+/* Activities Section - Styles the activities title */
 .activities-title {
     font-size: 20px;
     font-weight: bold;
-    color: #546F6C; /* Green aesthetic */
+    color: #546F6C;
     margin-bottom: 10px;
 }
 
+/* Activities List - Arranges activity items in a flexible grid */
 .activities-list {
     list-style: none;
     padding: 0;
     margin: 0;
     display: flex;
     flex-wrap: wrap;
-    gap: 10px; /* Space between activity items */
+    gap: 10px;
 }
 
+/* Activity Item - Styles each activity button */
 .activity-item {
-    background-color: #546F6C; /* Green aesthetic */
+    background-color: #546F6C;
     color: white;
     padding: 8px 15px;
     border-radius: 5px;
     font-size: 14px;
-    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
     transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
-/* Hover Effect for Activity Items */
+/* Hover Effect for Activity Items - Adds hover animation */
 .activity-item:hover {
-    transform: scale(1.05); /* Slight zoom on hover */
-    box-shadow: 0px 6px 8px rgba(0, 0, 0, 0.2); /* Enhance shadow */
+    transform: scale(1.05);
+    box-shadow: 0px 6px 8px rgba(0, 0, 0, 0.2);
 }
 
-/* Park Location */
+/* Park Location - Styles the location text */
 .park-location {
     font-size: 16px;
     color: #666;
     margin-top: 20px;
 }
-/* Park Details Section */
+
+/* Park Details Section - Overall container styling */
 .park-details-section {
     margin-top: 30px;
     padding: 20px;
-    background-color: #f9f9f9; /* Light background */
+    background-color: #f9f9f9;
     border: 2px solid #ccc;
     border-radius: 10px;
     box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-    text-align: center; /* Center-align all content */
+    text-align: center;
 }
 
-/* Image Container */
+/* Image Container - Centers the park image */
 .park-image-container {
     margin-bottom: 20px;
     display: flex;
-    justify-content: center; /* Center the image horizontally */
+    justify-content: center;
 }
 
-/* Park Image */
+/* Park Image - Resizes and centers the park image */
 .park-image {
     max-width: 100%;
     height: auto;
-    max-height: 300px; /* Limit the height for consistency */
-    border-radius: 10px; /* Rounded corners */
-    border: 3px solid #546F6C; /* Green border */
-    box-shadow: 0px 6px 8px rgba(0, 0, 0, 0.15); /* Subtle shadow */
+    max-height: 300px;
+    border-radius: 10px;
+    border: 3px solid #546F6C;
+    box-shadow: 0px 6px 8px rgba(0, 0, 0, 0.15);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-/* Hover Effect for Park Image */
+/* Hover Effect for Park Image - Adds hover animation */
 .park-image:hover {
-    transform: scale(1.05); /* Slight zoom on hover */
-    box-shadow: 0px 8px 12px rgba(0, 0, 0, 0.2); /* Enhance shadow on hover */
+    transform: scale(1.05);
+    box-shadow: 0px 8px 12px rgba(0, 0, 0, 0.2);
 }
 
-/* Park Title */
-.park-title {
-    font-size: 28px;
-    font-weight: bold;
-    color: #546F6C; /* Match your green aesthetic */
-    margin-bottom: 20px;
-}
-
-/* Park Description */
 /* Park Description */
 .park-description {
     font-size: 16px;
     color: #333;
     line-height: 1.6;
-    margin: 20px auto; /* Center-align */
-    max-width: 90%; /* Ensure it doesn't stretch too far */
-    width: fit-content; /* Dynamically adjust width to content */
-    text-align: center; /* Center the text */
+    margin: 20px auto;
+    max-width: 90%;
+    width: fit-content;
+    text-align: center;
 }
-
 
 /* Activities Section */
 .activities-title {
     font-size: 20px;
     font-weight: bold;
-    color: #546F6C; /* Match your green aesthetic */
+    color: #546F6C;
     margin-bottom: 10px;
 }
 
+/* Activities List - Styles the layout of activity buttons */
 .activities-list {
     list-style: none;
     padding: 0;
     margin: 0;
     display: flex;
     flex-wrap: wrap;
-    gap: 10px; /* Space between activity items */
-    justify-content: center; /* Center activities */
+    gap: 10px;
+    justify-content: center;
 }
 
+/* Activity Item */
 .activity-item {
-    background-color: #546F6C; /* Green aesthetic */
+    background-color: #546F6C;
     color: white;
     padding: 8px 15px;
     border-radius: 5px;
     font-size: 14px;
-    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
     transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
 /* Hover Effect for Activity Items */
 .activity-item:hover {
-    transform: scale(1.05); /* Slight zoom on hover */
-    box-shadow: 0px 6px 8px rgba(0, 0, 0, 0.2); /* Enhance shadow */
+    transform: scale(1.05);
+    box-shadow: 0px 6px 8px rgba(0, 0, 0, 0.2);
 }
 
-/* Park Location */
-.park-location {
-    font-size: 16px;
-    color: #666;
-    margin-top: 20px;
-}
-
+/* No Parks Message - Styles the message displayed when no parks are found */
 .no-parks-message {
-    color: #546F6C; /* Green shade to match aesthetic */
+    color: #546F6C;
     font-size: 18px;
     font-weight: bold;
     text-align: center;
     margin-top: 20px;
-    background-color: #f9f9f9; /* Light background */
+    background-color: #f9f9f9;
     padding: 15px;
-    border: 2px solid #ccc; /* Subtle border */
+    border: 2px solid #ccc;
     border-radius: 10px;
-    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
 }

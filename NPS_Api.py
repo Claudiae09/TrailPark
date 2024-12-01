@@ -14,7 +14,7 @@ if not API_KEY:
 
 BASE_URL = "https://developer.nps.gov/api/v1"
 
-
+#Fetch National Parks for a given state.
 def get_parks_by_state(state_code):
     url = f"{BASE_URL}/parks?stateCode={state_code}&api_key={API_KEY}"
     try:
@@ -34,7 +34,7 @@ def get_parks_by_state(state_code):
         print(f"Error fetching parks: {e}")
         return []
 
-
+#Fetch detailed information for a specific park.
 def get_park_details(park_code):
     url = f"{BASE_URL}/parks?parkCode={park_code}&api_key={API_KEY}"  # Corrected endpoint
     try:
@@ -55,7 +55,7 @@ def get_park_details(park_code):
         print(f"Error fetching park details: {e}")
     return None
 
-
+#Launch a simple calendar application to select a date.
 def run_calendar_app():
     def show_selected_date():
         selected_date = calendar.get_date()
