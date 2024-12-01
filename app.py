@@ -7,9 +7,11 @@ from wtforms import SelectField, SubmitField, RadioField, DateField
 import tkinter as tk
 from tkinter import ttk
 from tkcalendar import Calendar
+import secrets
 
 app = Flask(__name__)
-app.config['SECRET_KEY'] = 'secret123'  # Replace with a secure key
+app.config['SECRET_KEY'] = os.getenv('FLASK_SECRET_KEY', 'defaultfallbackkey')
+
 
 # Form to select state and submit
 class StateForm(FlaskForm):
