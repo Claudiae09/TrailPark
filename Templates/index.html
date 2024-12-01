@@ -5,74 +5,88 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Find National Parks</title>
 
+    <!-- CSS Links -->
     <link rel="stylesheet" href="/static/styles.css">
     <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
 </head>
 <body>
+    <!-- Header Section -->
     <header>
         <img src="/static/Logo.png" alt="Logo">
     </header>
 
-        <section class="landing-section" style="background: url('/static/Main-Pic.jpeg') no-repeat center center/cover; background-size: cover;">
+    <!-- Landing Section -->
+    <section class="landing-section" style="background: url('/static/Main-Pic.jpeg') no-repeat center center/cover; background-size: cover;">
         <h1>Find Your Park</h1>
         <p>Plan your trip. Pick the state. Pick the park. Pick the date.</p>
 
-    <label for="state-select" class="state-label">Select a State</label>
-            <form method="POST" id="state-form">
+        <!-- State Selection -->
+        <label for="state-select" class="state-label">Select a State</label>
+        <form method="POST" id="state-form">
             {{ form.hidden_tag() }}
             {{ form.state }}
         </form>
     </section>
 
-        <script>
+    <script>
         // Automatically submit the form when a state is selected
         document.getElementById('state-form').addEventListener('change', function () {
             this.submit();
         });
     </script>
 
-    <!-- Park Selection -->
-    {% if parks %}
-        <h2>Select a Park:</h2>
-        <form method="POST">
-            {{ form.hidden_tag() }}
-
-            <ul>
-                {% for park in parks %}
-                    <li>
+    <!-- Park Selection Section -->
+    {% if parks is not none %}
+    <section class="parks-section">
+        {% if parks %}
+            <h2 class="section-title">Pick the Park:</h2>
+            <form method="POST">
+                {{ form.hidden_tag() }}
+                <ul class="park-list">
+                    {% for park in parks %}
+                    <li class="park-item">
+                        <!-- Radio Button -->
                         <input type="radio" name="selected_park" value="{{ park['parkCode'] }}" id="{{ park['parkCode'] }}">
-                        <label for="{{ park['parkCode'] }}">{{ park['fullName'] }}</label>
+                        <!-- Label for the Card -->
+                        <label for="{{ park['parkCode'] }}">
+                            <h3>{{ park['fullName'] }}</h3>
+                            <p>{{ park['description'] }}</p>
+                        </label>
                     </li>
-                {% endfor %}
-            </ul>
+                    {% endfor %}
+                </ul>
 
-            <!-- Add a Date Picker -->
-            <label for="visit-date">Select a Date:</label>
-            <input type="date" id="visit-date" name="visit_date" required>
+                <!-- Date Picker -->
+                <label for="visit-date">Select a Date:</label>
+                <input type="date" id="visit-date" name="visit_date" required>
 
-            <!-- Submit Button for Park Selection -->
-            <button type="submit">Submit</button>
-        </form>
-    {% else %}
-        <p>No parks found for the selected state.</p>
+                <!-- Submit Button -->
+                <button type="submit">Submit</button>
+            </form>
+        {% else %}
+            <p>No parks found for the selected state.</p>
+        {% endif %}
+    </section>
     {% endif %}
 
-    <!-- Park Details and Activities -->
+    <!-- Park Details Section -->
     {% if parks_details %}
+    <section class="park-details-section">
         <h2>{{ parks_details.name }}</h2>
         <p>{{ parks_details.description }}</p>
 
         <h3>Activities:</h3>
         <ul>
             {% for activity in parks_details.activities %}
-                <li>{{ activity }}</li>
+            <li>{{ activity }}</li>
             {% endfor %}
         </ul>
 
         <p>Location: {{ parks_details.location }}</p>
         {% if parks_details.image_url %}
-            <img src="{{ parks_details.image_url }}" alt="Park Image" style="max-width: 300px;">
+        <img src="{{ parks_details.image_url }}" alt="Park Image" style="max-width: 300px;">
         {% endif %}
+    </section>
     {% endif %}
 </body>
 </html>
