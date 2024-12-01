@@ -108,15 +108,14 @@ find-your-park/
 
 ---
 
-## Future Enhancements
-- Add user authentication for saving favorite parks.
-- Enable custom trip itineraries.
-- Include park entrance fees and additional details.
-- Provide real-time weather updates for selected parks.
-
----
 
 ## Contributors
 - **Claudia Espinosa** - Developer
 - [https://github.com/your-profile-url](https://github.com/Claudiae09)
+- **Luiciano ** - Developer
+- [https://github.com/your-profile-url](https://github.com/LucianoDSCAR)
+- **Mauricio Rivas** - Developer
+- [https://github.com/your-profile-url](https://github.com/mriva077)
+- **Rafael N** - Developer
+- [https://github.com/your-profile-url](https://github.com/rniev)
 
