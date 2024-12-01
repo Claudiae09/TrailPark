@@ -111,11 +111,11 @@ find-your-park/
 
 ## Contributors
 - **Claudia Espinosa** - Developer
-- [https://github.com/your-profile-url](https://github.com/Claudiae09)
+- [https://github.com/Claudiae09](https://github.com/Claudiae09)
 - **Luiciano ** - Developer
-- [https://github.com/your-profile-url](https://github.com/LucianoDSCAR)
+- [https://github.com/LucianoDSCAR](https://github.com/LucianoDSCAR)
 - **Mauricio Rivas** - Developer
-- [https://github.com/your-profile-url](https://github.com/mriva077)
+- [https://github.com/mriva077](https://github.com/mriva077)
 - **Rafael N** - Developer
-- [https://github.com/your-profile-url](https://github.com/rniev)
+- [https://github.com/rniev](https://github.com/rniev)
 
