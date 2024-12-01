@@ -117,6 +117,6 @@ find-your-park/
 ---
 
 ## Contributors
-- **Your Name** - Developer
-- [Your GitHub Profile](https://github.com/your-profile-url)
+- **Claudia Espinosa** - Developer
+- [https://github.com/your-profile-url](https://github.com/Claudiae09)
 
