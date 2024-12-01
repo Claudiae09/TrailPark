@@ -35,58 +35,68 @@
         });
     </script>
 
-    <!-- Park Selection Section -->
-    {% if parks is not none %}
-    <section class="parks-section">
-        {% if parks %}
-            <h2 class="section-title">Pick the Park:</h2>
-            <form method="POST">
-                {{ form.hidden_tag() }}
-                <ul class="park-list">
-                    {% for park in parks %}
-                    <li class="park-item">
-                        <!-- Radio Button -->
-                        <input type="radio" name="selected_park" value="{{ park['parkCode'] }}" id="{{ park['parkCode'] }}">
-                        <!-- Label for the Card -->
-                        <label for="{{ park['parkCode'] }}">
-                            <h3>{{ park['fullName'] }}</h3>
-                            <p>{{ park['description'] }}</p>
-                        </label>
-                    </li>
-                    {% endfor %}
-                </ul>
+<!-- Park Selection Section -->
+{% if parks is not none %}
+<section class="parks-section">
+    {% if parks %}
+        <h2 class="section-title">Pick the Park:</h2>
+        <form method="POST">
+            {{ form.hidden_tag() }}
+            <ul class="park-list">
+                {% for park in parks %}
+                <li class="park-item">
+                    <!-- Radio Button -->
+                    <input type="radio" name="selected_park" value="{{ park['parkCode'] }}" id="{{ park['parkCode'] }}">
+                    <!-- Label for the Card -->
+                    <label for="{{ park['parkCode'] }}">
+                        <h3>{{ park['fullName'] }}</h3>
+                        <p>{{ park['description'] }}</p>
+                    </label>
+                </li>
+                {% endfor %}
+            </ul>
 
-                <!-- Date Picker -->
-                <label for="visit-date">Select a Date:</label>
-                <input type="date" id="visit-date" name="visit_date" required>
+            <!-- Date Picker Section -->
+            <section class="calendar-section">
+                <h3 class="calendar-title">Select a Date for Your Visit:</h3>
+                <label for="visit-date" class="calendar-label">Choose a date:</label>
+                <input type="date" id="visit-date" name="visit_date" required class="calendar-input">
+            </section>
 
-                <!-- Submit Button -->
-                <button type="submit">Submit</button>
-            </form>
-        {% else %}
-            <p>No parks found for the selected state.</p>
-        {% endif %}
-    </section>
+            <!-- Submit Button -->
+            <div class="submit-section">
+                <button type="submit" class="submit-button">Submit</button>
+            </div>
+        </form>
+    {% else %}
+        <p>No parks found for the selected state.</p>
     {% endif %}
+</section>
+{% endif %}
 
-    <!-- Park Details Section -->
-    {% if parks_details %}
-    <section class="park-details-section">
-        <h2>{{ parks_details.name }}</h2>
-        <p>{{ parks_details.description }}</p>
 
-        <h3>Activities:</h3>
-        <ul>
-            {% for activity in parks_details.activities %}
-            <li>{{ activity }}</li>
-            {% endfor %}
-        </ul>
-
-        <p>Location: {{ parks_details.location }}</p>
+<!-- Park Details Section -->
+{% if parks_details %}
+<section class="park-details-section">
+    <div class="park-image-container">
         {% if parks_details.image_url %}
-        <img src="{{ parks_details.image_url }}" alt="Park Image" style="max-width: 300px;">
+        <img src="{{ parks_details.image_url }}" alt="Park Image" class="park-image">
         {% endif %}
-    </section>
-    {% endif %}
+    </div>
+
+    <h2 class="park-title">{{ parks_details.name }}</h2>
+    <p class="park-description">{{ parks_details.description }}</p>
+
+    <h3 class="activities-title">Activities:</h3>
+    <ul class="activities-list">
+        {% for activity in parks_details.activities %}
+        <li class="activity-item">{{ activity }}</li>
+        {% endfor %}
+    </ul>
+
+    <p class="park-location">Location: {{ parks_details.location }}</p>
+</section>
+{% endif %}
+
 </body>
 </html>

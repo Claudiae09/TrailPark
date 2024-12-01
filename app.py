@@ -61,5 +61,5 @@ def index():
     return render_template('index.html', form=form, parks=parks, parks_details=parks_details, visit_date=visit_date)
 
 if __name__ == '__main__':
-    app.run(debug=True, port=7070)
+    app.run(debug=True, port=7050)
 

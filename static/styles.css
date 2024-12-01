@@ -196,3 +196,250 @@ header img {
 .park-item input[type="radio"]:focus-visible + label {
     outline: none; /* Completely remove the focus outline */
 }
+/* Calendar Section Styling */
+.calendar-section {
+    margin-top: 20px;
+    text-align: left;
+    background-color: #f9f9f9; /* Subtle light background */
+    padding: 15px 20px;
+    border-radius: 10px; /* Rounded corners */
+    border: 2px solid #ccc; /* Subtle border */
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+}
+
+.calendar-title {
+    font-size: 20px;
+    font-weight: bold;
+    color: #546F6C; /* Match your green aesthetic */
+    margin-bottom: 10px;
+}
+
+.calendar-label {
+    font-size: 16px;
+    color: #333;
+    display: block;
+    margin-bottom: 8px;
+}
+
+.calendar-input {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    border: 2px solid #ccc;
+    border-radius: 5px;
+    background-color: white;
+    color: #333;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Hover and Focus States for Calendar Input */
+.calendar-input:hover,
+.calendar-input:focus {
+    border-color: #546F6C; /* Green border on hover/focus */
+    box-shadow: 0px 0px 6px rgba(84, 111, 108, 0.5); /* Subtle glow */
+    outline: none;
+}
+
+/* Submit Section Styling */
+.submit-section {
+    margin-top: 20px;
+    text-align: center;
+}
+
+.submit-button {
+    padding: 10px 20px;
+    font-size: 18px;
+    font-weight: bold;
+    color: white;
+    background-color: #546F6C; /* Match your green aesthetic */
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+}
+
+/* Hover and Focus States for Submit Button */
+.submit-button:hover,
+.submit-button:focus {
+    background-color: #455b58; /* Darker green on hover */
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2); /* Enhance shadow */
+    outline: none;
+}
+/* Park Details Section Styling */
+.park-details-section {
+    margin-top: 30px;
+    padding: 20px;
+    background-color: #f9f9f9; /* Subtle light background */
+    border: 2px solid #ccc;
+    border-radius: 10px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Header with Title and Image */
+.park-details-header {
+    display: flex;
+    align-items: center;
+    gap: 20px; /* Space between title and image */
+    margin-bottom: 20px;
+}
+
+/* Park Title */
+.park-title {
+    font-size: 28px;
+    font-weight: bold;
+    color: #546F6C; /* Green aesthetic */
+}
+
+/* Park Image */
+.park-image {
+    max-width: 150px;
+    border-radius: 10px; /* Rounded corners */
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    border: 2px solid #ccc; /* Optional border */
+}
+
+/* Park Description */
+.park-description {
+    font-size: 16px;
+    color: #333;
+    line-height: 1.6;
+    margin-bottom: 20px;
+}
+
+/* Activities Section */
+.activities-title {
+    font-size: 20px;
+    font-weight: bold;
+    color: #546F6C; /* Green aesthetic */
+    margin-bottom: 10px;
+}
+
+.activities-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px; /* Space between activity items */
+}
+
+.activity-item {
+    background-color: #546F6C; /* Green aesthetic */
+    color: white;
+    padding: 8px 15px;
+    border-radius: 5px;
+    font-size: 14px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+/* Hover Effect for Activity Items */
+.activity-item:hover {
+    transform: scale(1.05); /* Slight zoom on hover */
+    box-shadow: 0px 6px 8px rgba(0, 0, 0, 0.2); /* Enhance shadow */
+}
+
+/* Park Location */
+.park-location {
+    font-size: 16px;
+    color: #666;
+    margin-top: 20px;
+}
+/* Park Details Section */
+.park-details-section {
+    margin-top: 30px;
+    padding: 20px;
+    background-color: #f9f9f9; /* Light background */
+    border: 2px solid #ccc;
+    border-radius: 10px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    text-align: center; /* Center-align all content */
+}
+
+/* Image Container */
+.park-image-container {
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: center; /* Center the image horizontally */
+}
+
+/* Park Image */
+.park-image {
+    max-width: 100%;
+    height: auto;
+    max-height: 300px; /* Limit the height for consistency */
+    border-radius: 10px; /* Rounded corners */
+    border: 3px solid #546F6C; /* Green border */
+    box-shadow: 0px 6px 8px rgba(0, 0, 0, 0.15); /* Subtle shadow */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Hover Effect for Park Image */
+.park-image:hover {
+    transform: scale(1.05); /* Slight zoom on hover */
+    box-shadow: 0px 8px 12px rgba(0, 0, 0, 0.2); /* Enhance shadow on hover */
+}
+
+/* Park Title */
+.park-title {
+    font-size: 28px;
+    font-weight: bold;
+    color: #546F6C; /* Match your green aesthetic */
+    margin-bottom: 20px;
+}
+
+/* Park Description */
+/* Park Description */
+.park-description {
+    font-size: 16px;
+    color: #333;
+    line-height: 1.6;
+    margin: 20px auto; /* Center-align */
+    max-width: 90%; /* Ensure it doesn't stretch too far */
+    width: fit-content; /* Dynamically adjust width to content */
+    text-align: center; /* Center the text */
+}
+
+
+/* Activities Section */
+.activities-title {
+    font-size: 20px;
+    font-weight: bold;
+    color: #546F6C; /* Match your green aesthetic */
+    margin-bottom: 10px;
+}
+
+.activities-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px; /* Space between activity items */
+    justify-content: center; /* Center activities */
+}
+
+.activity-item {
+    background-color: #546F6C; /* Green aesthetic */
+    color: white;
+    padding: 8px 15px;
+    border-radius: 5px;
+    font-size: 14px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+/* Hover Effect for Activity Items */
+.activity-item:hover {
+    transform: scale(1.05); /* Slight zoom on hover */
+    box-shadow: 0px 6px 8px rgba(0, 0, 0, 0.2); /* Enhance shadow */
+}
+
+/* Park Location */
+.park-location {
+    font-size: 16px;
+    color: #666;
+    margin-top: 20px;
+}
