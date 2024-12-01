@@ -1,5 +1,5 @@
-from flask import Flask, render_template,request
-from NPS_Api import get_parks_by_state,get_park_details
+from flask import Flask, render_template, request
+from NPS_Api import get_parks_by_state, get_park_details
 import os
 import requests
 from flask_wtf import FlaskForm
@@ -37,11 +37,16 @@ def index():
     parks = None
     parks_details = None
     visit_date = None
+    message = None  # To hold the message if no parks are found
 
     # Process the state selection form
     if form.validate_on_submit():
         selected_state = form.state.data
-        parks = get_parks_by_state(selected_state)  # This should populate parks
+        parks = get_parks_by_state(selected_state)  # Fetch parks for the selected state
+
+        # Check if no parks were found
+        if not parks:
+            message = f"Sorry, no National Parks were found in {selected_state}. Please select a different state."
 
     # Process the radio button submission (if applicable)
     if request.method == "POST" and "selected_park" in request.form:
@@ -49,17 +54,21 @@ def index():
         parks_details = get_park_details(selected_park_code)
         visit_date = request.form.get('visit_date', None)
 
-     # If a date is selected
+    # If a date is selected
     if "visit_date" in request.form:
         visit_date = request.form['visit_date']
         print(f"Selected visit date: {visit_date}")  # Debug or process as needed
-    else:
-        if "visit_date" not in request.form:
-            print("Please select a valid date.", "error")
 
-    # Render the template
-    return render_template('index.html', form=form, parks=parks, parks_details=parks_details, visit_date=visit_date)
+    # Render the template with the message
+    return render_template(
+        'index.html',
+        form=form,
+        parks=parks,
+        parks_details=parks_details,
+        visit_date=visit_date,
+        message=message
+    )
 
+# Move the following block outside of the index() function
 if __name__ == '__main__':
-    app.run(debug=True, port=7050)
-
+    app.run(debug=True, port=7070)

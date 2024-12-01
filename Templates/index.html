@@ -10,66 +10,66 @@
     <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
 </head>
 <body>
-    <!-- Header Section -->
-    <header>
-        <img src="/static/Logo.png" alt="Logo">
-    </header>
+<!-- Header Section -->
+<header>
+    <img src="/static/Logo.png" alt="Logo">
+</header>
 
-    <!-- Landing Section -->
-    <section class="landing-section" style="background: url('/static/Main-Pic.jpeg') no-repeat center center/cover; background-size: cover;">
-        <h1>Find Your Park</h1>
-        <p>Plan your trip. Pick the state. Pick the park. Pick the date.</p>
+<!-- Landing Section -->
+<section class="landing-section"
+         style="background: url('/static/Main-Pic.jpeg') no-repeat center center/cover; background-size: cover;">
+    <h1>Find Your Park</h1>
+    <p>Plan your trip. Pick the state. Pick the park. Pick the date.</p>
 
-        <!-- State Selection -->
-        <label for="state-select" class="state-label">Select a State</label>
-        <form method="POST" id="state-form">
-            {{ form.hidden_tag() }}
-            {{ form.state }}
-        </form>
-    </section>
+    <!-- State Selection -->
+    <label for="state-select" class="state-label">Select a State</label>
+    <form method="POST" id="state-form">
+        {{ form.hidden_tag() }}
+        {{ form.state }}
+    </form>
+</section>
 
-    <script>
-        // Automatically submit the form when a state is selected
-        document.getElementById('state-form').addEventListener('change', function () {
-            this.submit();
-        });
-    </script>
-
+<script>
+    // Automatically submit the form when a state is selected
+    document.getElementById('state-form').addEventListener('change', function () {
+        this.submit();
+    });
+</script>
 <!-- Park Selection Section -->
 {% if parks is not none %}
 <section class="parks-section">
     {% if parks %}
-        <h2 class="section-title">Pick the Park:</h2>
-        <form method="POST">
-            {{ form.hidden_tag() }}
-            <ul class="park-list">
-                {% for park in parks %}
-                <li class="park-item">
-                    <!-- Radio Button -->
-                    <input type="radio" name="selected_park" value="{{ park['parkCode'] }}" id="{{ park['parkCode'] }}">
-                    <!-- Label for the Card -->
-                    <label for="{{ park['parkCode'] }}">
-                        <h3>{{ park['fullName'] }}</h3>
-                        <p>{{ park['description'] }}</p>
-                    </label>
-                </li>
-                {% endfor %}
-            </ul>
+    <h2 class="section-title">Pick the Park:</h2>
+    <form method="POST">
+        {{ form.hidden_tag() }}
+        <ul class="park-list">
+            {% for park in parks %}
+            <li class="park-item">
+                <!-- Radio Button -->
+                <input type="radio" name="selected_park" value="{{ park['parkCode'] }}" id="{{ park['parkCode'] }}">
+                <!-- Label for the Card -->
+                <label for="{{ park['parkCode'] }}">
+                    <h3>{{ park['fullName'] }}</h3>
+                    <p>{{ park['description'] }}</p>
+                </label>
+            </li>
+            {% endfor %}
+        </ul>
 
-            <!-- Date Picker Section -->
-            <section class="calendar-section">
-                <h3 class="calendar-title">Select a Date for Your Visit:</h3>
-                <label for="visit-date" class="calendar-label">Choose a date:</label>
-                <input type="date" id="visit-date" name="visit_date" required class="calendar-input">
-            </section>
+        <!-- Date Picker Section -->
+        <section class="calendar-section">
+            <h3 class="calendar-title">Select a Date for Your Visit:</h3>
+            <label for="visit-date" class="calendar-label">Choose a date:</label>
+            <input type="date" id="visit-date" name="visit_date" required class="calendar-input">
+        </section>
 
-            <!-- Submit Button -->
-            <div class="submit-section">
-                <button type="submit" class="submit-button">Submit</button>
-            </div>
-        </form>
+        <!-- Submit Button -->
+        <div class="submit-section">
+            <button type="submit" class="submit-button">Submit</button>
+        </div>
+    </form>
     {% else %}
-        <p>No parks found for the selected state.</p>
+    <p class="no-parks-message">{{ message }}</p>
     {% endif %}
 </section>
 {% endif %}

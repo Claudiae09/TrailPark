@@ -14,15 +14,26 @@ if not API_KEY:
 
 BASE_URL = "https://developer.nps.gov/api/v1"
 
+
 def get_parks_by_state(state_code):
     url = f"{BASE_URL}/parks?stateCode={state_code}&api_key={API_KEY}"
     try:
         response = requests.get(url)
         response.raise_for_status()  # Raise an error for HTTP codes >= 400
-        return response.json().get('data', [])
+        all_parks = response.json().get('data', [])
+
+        # Filter parks to only include those with 'National Park' in the designation
+        national_parks = [
+            park for park in all_parks
+            if "National Park" in park.get("designation", "")
+        ]
+
+        print(f"Found {len(national_parks)} National Parks in {state_code}.")
+        return national_parks
     except requests.exceptions.RequestException as e:
         print(f"Error fetching parks: {e}")
         return []
+
 
 def get_park_details(park_code):
     url = f"{BASE_URL}/parks?parkCode={park_code}&api_key={API_KEY}"  # Corrected endpoint
@@ -44,29 +55,31 @@ def get_park_details(park_code):
         print(f"Error fetching park details: {e}")
     return None
 
+
 def run_calendar_app():
     def show_selected_date():
         selected_date = calendar.get_date()
         label.config(text=f"You selected: {selected_date}")
 
-# Create the main application window
+    # Create the main application window
     root = tk.Tk()
     root.title("Date Picker")
 
-# Create and place the Calendar widget
+    # Create and place the Calendar widget
     calendar = Calendar(root, selectmode='day', year=2024, month=12, day=1)
     calendar.pack(pady=20)
 
-# Button to confirm the selection
+    # Button to confirm the selection
     select_button = tk.Button(root, text="Select Date", command=show_selected_date)
     select_button.pack(pady=10)
 
-# Label to display the selected date
+    # Label to display the selected date
     label = tk.Label(root, text="")
     label.pack(pady=10)
 
-# Run the application
+    # Run the application
     root.mainloop()
+
 
 if __name__ == '__main__':
     run_calendar_app()
